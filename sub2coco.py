@@ -89,7 +89,8 @@ def create_categories(subdataset:SegmentDataset):
                     'id':classId,
                     'name':str(classId)
                 }
-                class_infos.append(class_info)
+                if class_info not in class_infos:
+                    class_infos.append(class_info)
     return class_infos
 
 def subdataset2coco(subdataset:SegmentDataset, save_dir):
@@ -137,7 +138,7 @@ def subdataset2coco(subdataset:SegmentDataset, save_dir):
 
 if __name__ == '__main__':
     from subannodataset import SubAnnoDataset
-    w,h = 500,1263
-    num = 50
+    w,h = 608,608
+    num = 100
     subdataset = SubAnnoDataset(f'./data/testdata-{w}-{h}-{num}/')
     subdataset2coco(subdataset, f'./data/testdata-{w}-{h}-{num}/coco-{w}-{h}')
