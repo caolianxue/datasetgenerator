@@ -23,7 +23,7 @@ def subdataset2unet(subdataset: SegmentDataset, save_dir:str):
     print('proccessing...')
     for idx, (img, box) in enumerate(subdataset, 1):
         print(f'proccessing...{idx}/{len(subdataset)}')
-        semantic_masks = np.zeros([num_classes, img_size[0], img_size[1]])
+        semantic_masks = np.zeros([num_classes, img_size[1], img_size[0]])
         img = Trans.ToPILImage()(img)
         rect, masks,_ = box
         for i, mask in enumerate(masks):
@@ -41,6 +41,7 @@ def subdataset2unet(subdataset: SegmentDataset, save_dir:str):
 
 if __name__ == '__main__':
     from subannodataset import SubAnnoDataset
-    s = 480
-    subdataset = SubAnnoDataset(f'./data/unet-testdata-{s}-300/', [s,s])
-    subdataset2unet(subdataset, f'./data/unet-testdata-{s}-300/subannos-{s}')
+    w,h = 500,1263
+    num = 50
+    subdataset = SubAnnoDataset(f'./data/testdata-{w}-{h}-{num}/', [w,h])
+    subdataset2unet(subdataset, f'./data/testdata-{w}-{h}-{num}/unet-{w}-{h}')

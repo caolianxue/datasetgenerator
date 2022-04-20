@@ -137,5 +137,7 @@ def subdataset2coco(subdataset:SegmentDataset, save_dir):
 
 if __name__ == '__main__':
     from subannodataset import SubAnnoDataset
-    subdataset = SubAnnoDataset('./data/unet-testdata-480-300/')
-    subdataset2coco(subdataset, './data/unet-testdata-480-300/coco-480-300')
+    w,h = 500,1263
+    num = 50
+    subdataset = SubAnnoDataset(f'./data/testdata-{w}-{h}-{num}/')
+    subdataset2coco(subdataset, f'./data/testdata-{w}-{h}-{num}/coco-{w}-{h}')

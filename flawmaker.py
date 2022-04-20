@@ -219,7 +219,7 @@ if __name__ == '__main__':
     num = 50
     flawMaker = FlawMaker(num, 
                         [BlockMaskMaker(), LineMaskMaker(), DotMaskMaker()],   #  排序，依次从下到上，避免小目标被遮挡
-                        f'./data/unet-testdata-{w}-{h}-{num}',
+                        f'./data/testdata-{w}-{h}-{num}',
                         bkcolor_func = rand_gray_img2([w,h]),
                         forecolor_func= rand_gray(30,225),
                         image_size=[w,h],
